@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -13,7 +14,7 @@ import android.view.animation.Interpolator;
 import android.widget.ImageButton;
 
 /**
- * Created by Günhan on 17.08.2015.
+ * Created by Gunhan on 17.08.2015.
  */
 public class AnimButton extends ImageButton {
     private static final Interpolator interpolator = new AccelerateDecelerateInterpolator();
@@ -25,7 +26,6 @@ public class AnimButton extends ImageButton {
     private Drawable secondDrawable;
 
     private int state = FIRST_STATE;
-    private int total = 100;
     private int duration = 200;
     private boolean init = false;
 
@@ -85,6 +85,8 @@ public class AnimButton extends ImageButton {
     }
 
     private void animate(final Drawable from, final Drawable to) {
+        final int total = ((BitmapDrawable) from).getBitmap().getWidth() / 2;
+        
         ValueAnimator animator = ValueAnimator.ofInt(0, total);
         animator.setDuration(duration);
         animator.setInterpolator(interpolator);
