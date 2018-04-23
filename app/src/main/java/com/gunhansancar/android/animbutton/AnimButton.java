@@ -69,11 +69,11 @@ public class AnimButton extends ImageButton {
             Resources resources = getResources();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                firstDrawable = resources.getDrawable(firstResourceId, null);
-                secondDrawable = resources.getDrawable(secondResourceId, null);
+                firstDrawable = resources.getDrawable(firstResourceId, null).mutate();
+                secondDrawable = resources.getDrawable(secondResourceId, null).mutate();
             } else {
-                firstDrawable = resources.getDrawable(firstResourceId);
-                secondDrawable = resources.getDrawable(secondResourceId);
+                firstDrawable = resources.getDrawable(firstResourceId).mutate();
+                secondDrawable = resources.getDrawable(secondResourceId).mutate();
             }
 
             setImageDrawable(firstDrawable);
